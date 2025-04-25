@@ -21,8 +21,8 @@ use App\Http\Controllers\ContactController;
 // // Supprimer un contact
 // Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-// // (Facultatif) Modifier un contact
-// Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');
+// (Facultatif) Modifier un contact
+Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');
 
 // // (Facultatif) Formulaire d’édition
 // Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
@@ -58,5 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::get('/notifications', function () {
+    return view('notifications');
+})->name('notifications.index');
+
 
 require __DIR__.'/auth.php';
